@@ -11,7 +11,7 @@
             <div class="col-8 offset-2">
 
                 <div class="row pt-4">
-                    <h1>Регистрация организации</h1>
+                    <h1>Редактирование организации</h1>
                 </div>
 
                 <div class="form-group row pt-4">
@@ -21,7 +21,7 @@
                     type="text"
                     class="form-control @error('org_name') is-invalid @enderror"
                     name="org_name"
-                    value="{{ old('org_name') }}"
+                    value="{{ $organization->org_name }}"
                     autocomplete="org_name" autofocus>
 
                     @error('org_name')
@@ -45,7 +45,7 @@
                     type="text"
                     class="form-control @error('org_adress_legal_index') is-invalid @enderror"
                     name="org_adress_legal_index"
-                    value="{{ old('org_adress_legal_index') }}"
+                    value="{{ $organization->org_adress_legal_index }}"
                     autocomplete="org_adress_legal_index" autofocus>
 
                     @error('org_adress_legal_index')
@@ -64,7 +64,7 @@
                     type="text"
                     class="form-control @error('org_adress_legal_city') is-invalid @enderror"
                     name="org_adress_legal_city"
-                    value="{{ old('org_adress_legal_city') }}"
+                    value="{{ $organization->org_adress_legal_city }}"
                     autocomplete="org_adress_legal_city" autofocus>
 
                     @error('org_adress_legal_city')
@@ -84,7 +84,7 @@
                     type="text"
                     class="form-control @error('org_adress_legal_street') is-invalid @enderror"
                     name="org_adress_legal_street"
-                    value="{{ old('org_adress_legal_street') }}"
+                    value="{{ $organization->org_adress_legal_street }}"
                     autocomplete="org_adress_legal_street" autofocus>
 
                     @error('org_adress_legal_street')
@@ -103,7 +103,7 @@
                     type="text"
                     class="form-control @error('org_adress_legal_house') is-invalid @enderror"
                     name="org_adress_legal_house"
-                    value="{{ old('org_adress_legal_house') }}"
+                    value="{{ $organization->org_adress_legal_house }}"
                     autocomplete="org_adress_legal_house" autofocus>
 
                     @error('org_adress_legal_house')
@@ -122,7 +122,7 @@
                     type="text"
                     class="form-control @error('org_adress_legal_corps') is-invalid @enderror"
                     name="org_adress_legal_corps"
-                    value="{{ old('org_adress_legal_corps') }}"
+                    value="{{ $organization->org_adress_legal_corps }}"
                     autocomplete="org_adress_legal_corps" autofocus>
 
                     @error('org_adress_legal_corps')
@@ -141,7 +141,7 @@
                     type="text"
                     class="form-control @error('org_adress_legal_office') is-invalid @enderror"
                     name="org_adress_legal_office"
-                    value="{{ old('org_adress_legal_office') }}"
+                    value="{{ $organization->org_adress_legal_office }}"
                     autocomplete="org_adress_legal_office" autofocus>
 
                     @error('org_adress_legal_office')
@@ -165,7 +165,7 @@
                     type="text"
                     class="form-control @error('org_adress_post_index') is-invalid @enderror"
                     name="org_adress_post_index"
-                    value="{{ old('org_adress_post_index') }}"
+                    value="{{ $organization->org_adress_post_index }}"
                     autocomplete="org_adress_post_index" autofocus>
 
                     @error('org_adress_post_index')
@@ -184,7 +184,7 @@
                     type="text"
                     class="form-control @error('org_adress_post_city') is-invalid @enderror"
                     name="org_adress_post_city"
-                    value="{{ old('org_adress_post_city') }}"
+                    value="{{ $organization->org_adress_post_city }}"
                     autocomplete="org_adress_post_city" autofocus>
 
                     @error('org_adress_post_city')
@@ -203,7 +203,7 @@
                     type="text"
                     class="form-control @error('org_adress_post_street') is-invalid @enderror"
                     name="org_adress_post_street"
-                    value="{{ old('org_adress_post_street') }}"
+                    value="{{ $organization->org_adress_post_street }}"
                     autocomplete="org_adress_post_street" autofocus>
 
                     @error('org_adress_post_street')
@@ -222,7 +222,7 @@
                     type="text"
                     class="form-control @error('org_adress_post_house') is-invalid @enderror"
                     name="org_adress_post_house"
-                    value="{{ old('org_adress_post_house') }}"
+                    value="{{ $organization->org_adress_post_house }}"
                     autocomplete="org_adress_post_house" autofocus>
 
                     @error('org_adress_post_house')
@@ -241,7 +241,7 @@
                     type="text"
                     class="form-control @error('org_adress_post_corps') is-invalid @enderror"
                     name="org_adress_post_corps"
-                    value="{{ old('org_adress_post_corps') }}"
+                    value="{{ $organization->org_adress_post_corps }}"
                     autocomplete="org_adress_post_corps" autofocus>
 
                     @error('org_adress_post_corps')
@@ -260,7 +260,7 @@
                     type="text"
                     class="form-control @error('org_adress_post_office') is-invalid @enderror"
                     name="org_adress_post_office"
-                    value="{{ old('org_adress_post_office') }}"
+                    value="{{ $organization->org_adress_post_office }}"
                     autocomplete="org_adress_post_office" autofocus>
 
                     @error('org_adress_post_office')
@@ -279,7 +279,7 @@
                     type="text"
                     class="form-control @error('org_phone') is-invalid @enderror"
                     name="org_phone"
-                    value="{{ old('org_phone') }}"
+                    value="{{ $organization->org_phone }}"
                     autocomplete="org_phone" autofocus>
 
                     @error('org_phone')
@@ -298,7 +298,7 @@
                     type="text"
                     class="form-control @error('org_fax') is-invalid @enderror"
                     name="org_fax"
-                    value="{{ old('org_fax') }}"
+                    value="{{ $organization->org_fax }}"
                     autocomplete="org_fax" autofocus>
 
                     @error('org_fax')
@@ -317,7 +317,7 @@
                     type="text"
                     class="form-control @error('org_email') is-invalid @enderror"
                     name="org_email"
-                    value="{{ old('org_email') }}"
+                    value="{{ $organization->org_email }}"
                     autocomplete="org_email" autofocus>
 
                     @error('org_email')
@@ -336,7 +336,7 @@
                     type="text"
                     class="form-control @error('org_website') is-invalid @enderror"
                     name="org_website"
-                    value="{{ old('org_website') }}"
+                    value="{{ $organization->org_website }}"
                     autocomplete="org_website" autofocus>
 
                     @error('org_website')
@@ -355,7 +355,7 @@
                     type="text"
                     class="form-control @error('org_directorate') is-invalid @enderror"
                     name="org_directorate"
-                    value="{{ old('org_directorate') }}"
+                    value="{{ $organization->org_directorate }}"
                     autocomplete="org_directorate" autofocus>
 
                     @error('org_directorate')
@@ -374,7 +374,7 @@
                     type="text"
                     class="form-control @error('org_debit_account') is-invalid @enderror"
                     name="org_debit_account"
-                    value="{{ old('org_debit_account') }}"
+                    value="{{ $organization->org_debit_account }}"
                     autocomplete="org_debit_account" autofocus>
 
                     @error('org_debit_account')
@@ -393,7 +393,7 @@
                     type="text"
                     class="form-control @error('org_bic') is-invalid @enderror"
                     name="org_bic"
-                    value="{{ old('org_bic') }}"
+                    value="{{ $organization->org_bic }}"
                     autocomplete="org_bic" autofocus>
 
                     @error('org_bic')
@@ -412,7 +412,7 @@
                     type="text"
                     class="form-control @error('org_unp') is-invalid @enderror"
                     name="org_unp"
-                    value="{{ old('org_unp') }}"
+                    value="{{ $organization->org_unp }}"
                     autocomplete="org_unp" autofocus>
 
                     @error('org_unp')
@@ -431,7 +431,7 @@
                     type="text"
                     class="form-control @error('org_okpo') is-invalid @enderror"
                     name="org_okpo"
-                    value="{{ old('org_okpo') }}"
+                    value="{{ $organization->org_okpo }}"
                     autocomplete="org_okpo" autofocus>
 
                     @error('org_okpo')
@@ -444,7 +444,7 @@
                 </div>
 
                 <div class="row pt-4">
-                    <button class="p-3 mt-3 btn btn-primary d-inline-block">Зарегистрировать организацию</button>
+                    <button class="p-3 mt-3 btn btn-primary d-inline-block">Сохранить изменения</button>
                 </div>
 
             </div>

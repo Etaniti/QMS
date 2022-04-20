@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="row justify-content-left">
-                    <button class="p-3 m-3 btn btn-primary d-inline-block"><a href='#' class="text-white">Создать штатное расписание</a></button>
+                    <button class="p-3 m-3 btn btn-primary d-inline-block"><a href='/organizations/{{ $organization->id }}/staff' class="text-white">Создать штатное расписание</a></button>
                 </div>
             @endcan
 

@@ -24,4 +24,14 @@ class Organization extends Model
 
         return $organization && $this->user()->can('update-organization', $organization);
     }
+
+    public function specialist()
+    {
+        return $this->hasMany(Specialist::class);
+    }
+
+    public function worker()
+    {
+        return $this->hasMany(Worker::class);
+    }
 }
