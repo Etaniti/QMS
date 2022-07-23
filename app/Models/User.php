@@ -59,6 +59,30 @@ class User extends Authenticatable
 
     public function organizations()
     {
-        return $this->hasMany(Organization::class);
+        return $this->hasMany(Organization::class, 'user_id', 'id');
+    }
+
+    public function specialists()
+    {
+        return $this->hasManyThrough(
+            Specialist::class,
+            Organization::class,
+            'user_id',
+            'organization_id',
+            'id',
+            'id'
+        );
+    }
+
+    public function workers()
+    {
+        return $this->hasManyThrough(
+            Worker::class,
+            Organization::class,
+            'user_id',
+            'organization_id',
+            'id',
+            'id'
+        );
     }
 }

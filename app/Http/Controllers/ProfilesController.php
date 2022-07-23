@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Profile;
 
 class ProfilesController extends Controller
 {
     public function index(User $user)
     {
-        /*$user = User::findOrFail($user);
-        return view('home');*/
         return view('profiles.index', compact('user'));
     }
 
@@ -21,16 +20,11 @@ class ProfilesController extends Controller
         return view('profiles.edit', compact('user'));
     }
 
-    public function update(User $user)
+    public function update(Request $request, $id)
     {
-        $this->authorize('update', $user->profile);
+        $data = request()->except(['_token', '_method']);
+        $profile = Profile::whereId($id)->update($data);
 
-        $data = request()->validate([
-            'contact_phone' => ['nullable', 'unique:profiles', 'regex:/^([0-9\s\+\(\)]*)$/', 'size:13'],
-        ]);
-
-        auth()->user()->profile->update($data);
-
-        return redirect("/profile/{$user->id}");
+        return redirect("/profile/{$id}");
     }
 }

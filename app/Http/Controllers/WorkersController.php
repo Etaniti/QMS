@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Workers\CreateRequest;
+use App\Http\Requests\Workers\UpdateRequest;
+use App\Models\Organization;
+use App\Models\Worker;
 
 class WorkersController extends Controller
 {
@@ -11,10 +15,9 @@ class WorkersController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(User $user, Organization $organization)
+    public function index(Organization $organization, Worker $worker)
     {
-        $user = User::findOrFail($user);
-        $organization = Organization::findOrFail($organization);
+        return view('organizations.staff.workers.index', compact('organization', 'worker'));
     }
 
     public function resolveUser()
@@ -22,38 +25,57 @@ class WorkersController extends Controller
         return auth()->user();
     }
 
-    public function create()
+    public function create($organization_id)
     {
-        return view('staff.workers.create');
+        return view('organizations.staff.workers.create', compact('organization_id'));
     }
 
-    public function store()
+    public function store(CreateRequest $request)
     {
-        $data = request()->validate([
-            'workers_name' => ['required', 'string', 'unique:organizations', 'max:255'],
-            'workers_count' => ['required', 'numeric'],
-            'workers_tariff_category' => ['required', 'numeric', 'max:255'],
-            'workers_tariff_coefficient' => ['required', 'string', 'max:255'],
-            'workers_tariff_rate' => ['required', 'numeric'],
-            'workers_payrise_management_perc' => ['nullable'],
-            'workers_payrise_management_amount' => ['nullable', 'numeric'],
-            'workers_payrise_intensity_perc' => ['nullable'],
-            'workers_payrise_intensity_amount' => ['nullable', 'numeric'],
-            'workers_payrise_category_perc' => ['nullable'],
-            'workers_payrise_category_amount' => ['nullable', 'numeric'],
-            'workers_payrise_specificity_perc' => ['nullable'],
-            'workers_payrise_specificity_amount' => ['nullable', 'numeric'],
-            'workers_additional_stimulation_perc' => ['nullable'],
-            'workers_additional_stimulation_amount' => ['nullable', 'numeric'],
+        $data = $request->validated();
+
+        Worker::create($data);
+
+        return redirect("/organizations/{$request->organization_id}/staff");
+    }
+
+    public function show()
+    {
+        //
+    }
+
+    public function edit(Organization $organization, Worker $worker)
+    {
+        return view('organizations.staff.workers.edit', compact('organization', 'worker'));
+    }
+
+    public function update(UpdateRequest $request, $id)
+    {
+        $data = $request->validated()->except(['_token', '_method']);
+        $worker = Worker::whereId($id)->update($data);
+
+        return redirect("/staff/workers/{$id}");
+    }
+
+    public function delete($id)
+    {
+        $worker = Worker::where('id', $id)
+            ->firstOrFail();
+
+        return view('organizations.staff.workers.delete', [
+            'worker' => $worker,
+            'title' => 'Удаление рабочей специальности'
         ]);
-
-        auth()->user()->organizations()->workers()->create($data);
-
-        return redirect("/organizations/" . auth()->user()->organization()->id . "/staff");
     }
 
-    public function show(Organization $organization, User $user)
+    public function destroy($id)
     {
-        return view('organizations.show', compact('organization', 'user'));
+        $worker = Worker::where('id', $id)
+            ->firstOrFail();
+
+        $worker->employeeWorkers()->delete();
+        $worker->delete();
+
+        return redirect ("/organizations/{$worker->organization_id}/staff");
     }
 }

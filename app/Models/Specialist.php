@@ -13,6 +13,11 @@ class Specialist extends Model
 
     public function organization()
     {
-        return $this->hasOne(Organization::class);
+        return $this->belongsTo(Organization::class, 'organization_id', 'id');
+    }
+
+    public function employeeSpecialists()
+    {
+        return $this->hasMany(EmployeeSpecialist::class);
     }
 }

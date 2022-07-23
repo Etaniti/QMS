@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Organizations\UpdateRequest;
 use App\Models\Organization;
 use App\Models\User;
 
@@ -30,31 +29,31 @@ class OrganizationsController extends Controller
         return view('organizations.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $data = request()->validate([
-            'org_name' => ['required', 'string', 'unique:organizations', 'max:255'],
-            'org_adress_legal_index' => ['required', 'digits:6'],
-            'org_adress_legal_city' => ['required', 'string', 'max:255'],
-            'org_adress_legal_street' => ['required', 'string', 'max:255'],
-            'org_adress_legal_house' => ['required', 'string', 'regex:/^[1-9]\d*(?:[ -]?(?:[а-яА-Я]+|[1-9]\d*))?$/'],
-            'org_adress_legal_corps' => ['nullable', 'numeric'],
-            'org_adress_legal_office' => ['nullable', 'string', 'max:255'],
-            'org_adress_post_index' => ['required', 'digits:6'],
-            'org_adress_post_city' => ['required', 'string', 'max:255'],
-            'org_adress_post_street' => ['required', 'string', 'max:255'],
-            'org_adress_post_house' => ['required', 'string', 'regex:/^[1-9]\d*(?:[ -]?(?:[а-яА-Я]+|[1-9]\d*))?$/'],
-            'org_adress_post_corps' => ['nullable', 'numeric'],
-            'org_adress_post_office' => ['nullable', 'string', 'max:255'],
-            'org_phone' => ['required', 'unique:organizations', 'regex:/^([0-9\s\+\(\)]*)$/', 'size:13'],
-            'org_fax' => ['nullable', 'string', 'unique:organizations', 'regex:/^([0-9\s\+\(\)]*)$/', 'size:13'],
-            'org_email' => ['required', 'string', 'email', 'unique:organizations', 'max:255'],
-            'org_website' => ['nullable', 'string', 'url', 'unique:organizations', 'max:255'],
-            'org_directorate' => ['required', 'string', 'max:255'],
-            'org_debit_account' => ['required', 'string', 'unique:organizations', 'regex:/^[A-Z0-9 ]+$/', 'size:28'],
-            'org_bic' => ['required', 'string', 'unique:organizations', 'regex:/^[A-Z0-9 ]+$/', 'size:8'],
-            'org_unp' => ['required', 'unique:organizations', 'digits:9'],
-            'org_okpo' => ['nullable', 'unique:organizations', 'digits:8'],
+            'organization_name' => ['required', 'string', 'unique:organizations', 'max:255'],
+            'organization_adress_legal_index' => ['required', 'digits:6'],
+            'organization_adress_legal_city' => ['required', 'string', 'max:255'],
+            'organization_adress_legal_street' => ['required', 'string', 'max:255'],
+            'organization_adress_legal_house' => ['required', 'string', 'regex:/^[1-9]\d*(?:[ -]?(?:[а-яА-Я]+|[1-9]\d*))?$/'],
+            'organization_adress_legal_corps' => ['nullable', 'numeric'],
+            'organization_adress_legal_office' => ['nullable', 'string', 'max:255'],
+            'organization_adress_post_index' => ['required', 'digits:6'],
+            'organization_adress_post_city' => ['required', 'string', 'max:255'],
+            'organization_adress_post_street' => ['required', 'string', 'max:255'],
+            'organization_adress_post_house' => ['required', 'string', 'regex:/^[1-9]\d*(?:[ -]?(?:[а-яА-Я]+|[1-9]\d*))?$/'],
+            'organization_adress_post_corps' => ['nullable', 'numeric'],
+            'organization_adress_post_office' => ['nullable', 'string', 'max:255'],
+            'organization_phone' => ['required', 'unique:organizations', 'regex:/^([0-9\s\+\(\)]*)$/', 'size:13'],
+            'organization_fax' => ['nullable', 'string', 'unique:organizations', 'regex:/^([0-9\s\+\(\)]*)$/', 'size:13'],
+            'organization_email' => ['required', 'string', 'email', 'unique:organizations', 'max:255'],
+            'organization_website' => ['nullable', 'string', 'url', 'unique:organizations', 'max:255'],
+            'organization_directorate' => ['required', 'string', 'max:255'],
+            'organization_debit_account' => ['required', 'string', 'unique:organizations', 'regex:/^[A-Z0-9 ]+$/', 'size:28'],
+            'organization_bic' => ['required', 'string', 'regex:/^[A-Z0-9 ]+$/', 'size:8'],
+            'organization_unp' => ['required', 'unique:organizations', 'digits:9'],
+            'organization_okpo' => ['nullable', 'unique:organizations', 'digits:8'],
         ]);
 
         auth()->user()->organizations()->create($data);
@@ -72,41 +71,68 @@ class OrganizationsController extends Controller
         return view('organizations.edit', compact('organization', 'user'));
     }
 
-    public function update(User $user, Organization $organization)
+    public function update(UpdateRequest $request, $id)
     {
-        $this->authorize('update', $user->organization);
+        /*$organization = Organization::whereId($id);*/
 
-        return $this->user()->can('update-organization', $this->organization);
+        /*if($organization->isDirty(['organization_name'])) {
+            $organization_name = $request->organization_name;
+        }
 
-        $data = request()->validate([
-            'org_name' => ['required', 'string', 'unique:organizations', 'max:255'],
-            'org_adress_legal_index' => ['required', 'digits:6'],
-            'org_adress_legal_city' => ['required', 'string', 'max:255'],
-            'org_adress_legal_street' => ['required', 'string', 'max:255'],
-            'org_adress_legal_house' => ['required', 'string', 'regex:/^[1-9]\d*(?:[ -]?(?:[а-яА-Я]+|[1-9]\d*))?$/'],
-            'org_adress_legal_corps' => ['nullable', 'numeric'],
-            'org_adress_legal_office' => ['nullable', 'string', 'max:255'],
-            'org_adress_post_index' => ['required', 'digits:6'],
-            'org_adress_post_city' => ['required', 'string', 'max:255'],
-            'org_adress_post_street' => ['required', 'string', 'max:255'],
-            'org_adress_post_house' => ['required', 'string', 'regex:/^[1-9]\d*(?:[ -]?(?:[а-яА-Я]+|[1-9]\d*))?$/'],
-            'org_adress_post_corps' => ['nullable', 'numeric'],
-            'org_adress_post_office' => ['nullable', 'string', 'max:255'],
-            'org_phone' => ['required', 'unique:organizations', 'regex:/^([0-9\s\+\(\)]*)$/', 'size:13'],
-            'org_fax' => ['nullable', 'string', 'unique:organizations', 'regex:/^([0-9\s\+\(\)]*)$/', 'size:13'],
-            'org_email' => ['required', 'string', 'email', 'unique:organizations', 'max:255'],
-            'org_website' => ['nullable', 'string', 'url', 'unique:organizations', 'max:255'],
-            'org_directorate' => ['required', 'string', 'max:255'],
-            'org_debit_account' => ['required', 'string', 'unique:organizations', 'regex:/^[A-Z0-9 ]+$/', 'size:28'],
-            'org_bic' => ['required', 'string', 'unique:organizations', 'regex:/^[A-Z0-9 ]+$/', 'size:8'],
-            'org_unp' => ['required', 'unique:organizations', 'digits:9'],
-            'org_okpo' => ['nullable', 'unique:organizations', 'digits:8'],
-        ]);
+        if($organization->isDirty('organization_phone')) {
+            $organization_phone = $request->organization_phone;
+        }
 
-        auth()->user()->organization->update($data);
+        if($organization->isDirty('organization_fax')) {
+            $organization_fax = $request->organization_fax;
+        }
 
-        return redirect("/organizations/{$organization->id}", compact('user'));
+        if($organization->isDirty('organization_email')) {
+            $organization_email = $request->organization_email;
+        }
 
+        if($organization->isDirty('organization_website')) {
+            $organization_website = $request->organization_website;
+        }
+
+        if($organization->isDirty('organization_debit_account')) {
+            $organization_debit_account = $request->organization_debit_account;
+        }
+
+        if($organization->isDirty('organization_unp')) {
+            $organization_unp = $request->organization_unp;
+        }
+
+        if($organization->isDirty('organization_okpo')) {
+            $organization_okpo = $request->organization_okpo;
+        }
+
+        $changedData = compact(
+            'organization_name',
+            'organization_phone',
+            'organization_fax',
+            'organization_email',
+            'organization_website',
+            'organization_debit_account',
+            'organization_unp',
+            'organization_okpo'
+        );
+
+        $validatedData = $changedData->validate([
+            'organization_name' => ['required', 'string', 'unique:organizations', 'max:255'],
+            'organization_phone' => ['required', 'unique:organizations', 'regex:/^([0-9\s\+\(\)]*)$/', 'size:13'],
+            'organization_fax' => ['nullable', 'string', 'unique:organizations', 'regex:/^([0-9\s\+\(\)]*)$/', 'size:13'],
+            'organization_email' => ['required', 'string', 'email', 'unique:organizations', 'max:255'],
+            'organization_website' => ['nullable', 'string', 'url', 'unique:organizations', 'max:255'],
+            'organization_debit_account' => ['required', 'string', 'unique:organizations', 'regex:/^[A-Z0-9 ]+$/', 'size:28'],
+            'organization_unp' => ['required', 'unique:organizations', 'digits:9'],
+            'organization_okpo' => ['nullable', 'unique:organizations', 'digits:8'],
+        ]);*/
+
+        $data = request()->except(['_token', '_method']);
+        $organization = Organization::whereId($id)->update($data);
+
+        return redirect("/organizations/{$id}");
     }
 
 }

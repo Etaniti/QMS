@@ -13,6 +13,11 @@ class Worker extends Model
 
     public function organization()
     {
-        return $this->hasOne(Organization::class);
+        return $this->belongsTo(Organization::class);
+    }
+
+    public function employeeWorkers()
+    {
+        return $this->hasMany(EmployeeWorker::class);
     }
 }

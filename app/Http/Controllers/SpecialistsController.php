@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Specialists\CreateRequest;
+use App\Http\Requests\Specialists\UpdateRequest;
 use App\Models\Organization;
-use App\Models\User;
+use App\Models\Specialist;
 
 class SpecialistsController extends Controller
 {
@@ -15,10 +15,9 @@ class SpecialistsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(User $user, Organization $organization)
+    public function index(Organization $organization, Specialist $specialist)
     {
-        $user = User::findOrFail($user);
-        $organization = Organization::findOrFail($organization);
+        return view('organizations.staff.specialists.index', compact('organization', 'specialist'));
     }
 
     public function resolveUser()
@@ -26,45 +25,58 @@ class SpecialistsController extends Controller
         return auth()->user();
     }
 
-    public function create()
+    public function create($organization_id)
     {
-        return view('staff.specialists.create');
+        return view('organizations.staff.specialists.create', compact('organization_id'));
     }
 
-    public function store()
+    public function store(CreateRequest $request)
     {
-        $data = request()->validate([
-            'org_name' => ['required', 'string', 'unique:organizations', 'max:255'],
-            'org_adress_legal_index' => ['required', 'digits:6'],
-            'org_adress_legal_city' => ['required', 'string', 'max:255'],
-            'org_adress_legal_street' => ['required', 'string', 'max:255'],
-            'org_adress_legal_house' => ['required', 'string', 'regex:/^[1-9]\d*(?:[ -]?(?:[а-яА-Я]+|[1-9]\d*))?$/'],
-            'org_adress_legal_corps' => ['nullable', 'numeric'],
-            'org_adress_legal_office' => ['nullable', 'string', 'max:255'],
-            'org_adress_post_index' => ['required', 'digits:6'],
-            'org_adress_post_city' => ['required', 'string', 'max:255'],
-            'org_adress_post_street' => ['required', 'string', 'max:255'],
-            'org_adress_post_house' => ['required', 'string', 'regex:/^[1-9]\d*(?:[ -]?(?:[а-яА-Я]+|[1-9]\d*))?$/'],
-            'org_adress_post_corps' => ['nullable', 'numeric'],
-            'org_adress_post_office' => ['nullable', 'string', 'max:255'],
-            'org_phone' => ['required', 'unique:organizations', 'regex:/^([0-9\s\+\(\)]*)$/', 'size:13'],
-            'org_fax' => ['nullable', 'string', 'unique:organizations', 'regex:/^([0-9\s\+\(\)]*)$/', 'size:13'],
-            'org_email' => ['required', 'string', 'email', 'unique:organizations', 'max:255'],
-            'org_website' => ['nullable', 'string', 'url', 'unique:organizations', 'max:255'],
-            'org_directorate' => ['required', 'string', 'max:255'],
-            'org_debit_account' => ['required', 'string', 'unique:organizations', 'regex:/^[A-Z0-9 ]+$/', 'size:28'],
-            'org_bic' => ['required', 'string', 'unique:organizations', 'regex:/^[A-Z0-9 ]+$/', 'size:8'],
-            'org_unp' => ['required', 'unique:organizations', 'digits:9'],
-            'org_okpo' => ['nullable', 'unique:organizations', 'digits:8'],
+        $data = $request->validated();
+
+        Specialist::create($data);
+
+        return redirect("/organizations/{$request->organization_id}/staff");
+
+    }
+
+    public function show()
+    {
+        //
+    }
+
+    public function edit(Organization $organization, Specialist $specialist)
+    {
+        return view('organizations.staff.specialists.edit', compact('organization', 'specialist'));
+    }
+
+    public function update(UpdateRequest $request, $id)
+    {
+        $data = $request->validated()->except(['_token', '_method']);
+        $specialist = Specialist::whereId($id)->update($data);
+
+        return redirect("/staff/specialists/{$id}");
+    }
+
+    public function delete($id)
+    {
+        $specialist = Specialist::where('id', $id)
+            ->firstOrFail();
+
+        return view('organizations.staff.specialists.delete', [
+            'specialist' => $specialist,
+            'title' => 'Удаление должности'
         ]);
-
-        auth()->user()->organizations()->create($data);
-
-        return redirect("/staff/" . auth()->user()->organization->id);
     }
 
-    public function show(Organization $organization, User $user)
+    public function destroy($id)
     {
-        return view('organizations.show', compact('organization', 'user'));
+        $specialist = Specialist::where('id', $id)
+            ->firstOrFail();
+
+        $specialist->employeeSpecialists()->delete();
+        $specialist->delete();
+
+        return redirect ("/organizations/{$specialist->organization_id}/staff");
     }
 }

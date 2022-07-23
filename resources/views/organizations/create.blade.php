@@ -6,23 +6,23 @@
         @csrf
 
         <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-6 offset-3">
 
                 <div class="row pt-4">
                     <h1>Регистрация организации</h1>
                 </div>
 
-                <div class="form-group row pt-4">
-                    <label for="org_name" class="col-md-4 col-form-label font-weight-bold">Наименование организации</label>
+                <div class="form-group row pt-4 mb-4">
+                    <label for="organization_name" class="col-md-10 col-form-label fw-bold">Наименование организации</label>
 
-                    <input id="org_name"
+                    <input id="organization_name"
                     type="text"
-                    class="form-control @error('org_name') is-invalid @enderror"
-                    name="org_name"
-                    value="{{ old('org_name') }}"
-                    autocomplete="org_name" autofocus>
+                    class="form-control @error('organization_name') is-invalid @enderror"
+                    name="organization_name"
+                    value="{{ old('organization_name') }}"
+                    autocomplete="organization_name" autofocus>
 
-                    @error('org_name')
+                    @error('organization_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -32,21 +32,21 @@
                 </div>
 
                 <div class="form-group row">
-                    <h3 class="col-md-4 col-form-label font-weight-bold">Юридический адрес</h3>
+                    <h3 class="col-md-10 col-form-label fw-bold">Юридический адрес</h3>
                     <!--Юридический адрес-->
                 </div>
 
                 <div class="form-group row offset-1">
-                    <label for="org_adress_legal_index" class="col-md-4 col-form-label">Почтовый индекс</label>
+                    <label for="organization_adress_legal_index" class="col-md-10 col-form-label">Почтовый индекс</label>
 
-                    <input id="org_adress_legal_index"
+                    <input id="organization_adress_legal_index"
                     type="text"
-                    class="form-control @error('org_adress_legal_index') is-invalid @enderror"
-                    name="org_adress_legal_index"
-                    value="{{ old('org_adress_legal_index') }}"
-                    autocomplete="org_adress_legal_index" autofocus>
+                    class="form-control @error('organization_adress_legal_index') is-invalid @enderror"
+                    name="organization_adress_legal_index"
+                    value="{{ old('organization_adress_legal_index') }}"
+                    autocomplete="organization_adress_legal_index" autofocus>
 
-                    @error('org_adress_legal_index')
+                    @error('organization_adress_legal_index')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -56,16 +56,16 @@
                 </div>
 
                 <div class="form-group row offset-1">
-                    <label for="org_adress_legal_city" class="col-md-4 col-form-label">Город</label>
+                    <label for="organization_adress_legal_city" class="col-md-10 col-form-label">Город</label>
 
-                    <input id="org_adress_legal_city"
+                    <input id="organization_adress_legal_city"
                     type="text"
-                    class="form-control @error('org_adress_legal_city') is-invalid @enderror"
-                    name="org_adress_legal_city"
-                    value="{{ old('org_adress_legal_city') }}"
-                    autocomplete="org_adress_legal_city" autofocus>
+                    class="form-control @error('organization_adress_legal_city') is-invalid @enderror"
+                    name="organization_adress_legal_city"
+                    value="{{ old('organization_adress_legal_city') }}"
+                    autocomplete="organization_adress_legal_city" autofocus>
 
-                    @error('org_adress_legal_city')
+                    @error('organization_adress_legal_city')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -76,16 +76,16 @@
 
 
                 <div class="form-group row offset-1">
-                    <label for="org_adress_legal_street" class="col-md-4 col-form-label">Улица</label>
+                    <label for="organization_adress_legal_street" class="col-md-10 col-form-label">Улица</label>
 
-                    <input id="org_adress_legal_street"
+                    <input id="organization_adress_legal_street"
                     type="text"
-                    class="form-control @error('org_adress_legal_street') is-invalid @enderror"
-                    name="org_adress_legal_street"
-                    value="{{ old('org_adress_legal_street') }}"
-                    autocomplete="org_adress_legal_street" autofocus>
+                    class="form-control @error('organization_adress_legal_street') is-invalid @enderror"
+                    name="organization_adress_legal_street"
+                    value="{{ old('organization_adress_legal_street') }}"
+                    autocomplete="organization_adress_legal_street" autofocus>
 
-                    @error('org_adress_legal_street')
+                    @error('organization_adress_legal_street')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -95,16 +95,16 @@
                 </div>
 
                 <div class="form-group row offset-1">
-                    <label for="org_adress_legal_house" class="col-md-4 col-form-label">Дом</label>
+                    <label for="organization_adress_legal_house" class="col-md-10 col-form-label">Дом</label>
 
-                    <input id="org_adress_legal_house"
+                    <input id="organization_adress_legal_house"
                     type="text"
-                    class="form-control @error('org_adress_legal_house') is-invalid @enderror"
-                    name="org_adress_legal_house"
-                    value="{{ old('org_adress_legal_house') }}"
-                    autocomplete="org_adress_legal_house" autofocus>
+                    class="form-control @error('organization_adress_legal_house') is-invalid @enderror"
+                    name="organization_adress_legal_house"
+                    value="{{ old('organization_adress_legal_house') }}"
+                    autocomplete="organization_adress_legal_house" autofocus>
 
-                    @error('org_adress_legal_house')
+                    @error('organization_adress_legal_house')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -114,16 +114,16 @@
                 </div>
 
                 <div class="form-group row offset-1">
-                    <label for="org_adress_legal_corps" class="col-md-4 col-form-label">Корпус</label>
+                    <label for="organization_adress_legal_corps" class="col-md-10 col-form-label">Корпус</label>
 
-                    <input id="org_adress_legal_corps"
+                    <input id="organization_adress_legal_corps"
                     type="text"
-                    class="form-control @error('org_adress_legal_corps') is-invalid @enderror"
-                    name="org_adress_legal_corps"
-                    value="{{ old('org_adress_legal_corps') }}"
-                    autocomplete="org_adress_legal_corps" autofocus>
+                    class="form-control @error('organization_adress_legal_corps') is-invalid @enderror"
+                    name="organization_adress_legal_corps"
+                    value="{{ old('organization_adress_legal_corps') }}"
+                    autocomplete="organization_adress_legal_corps" autofocus>
 
-                    @error('org_adress_legal_corps')
+                    @error('organization_adress_legal_corps')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -132,17 +132,17 @@
                     <!--Юридический адрес Корпус-->
                 </div>
 
-                <div class="form-group row offset-1">
-                    <label for="org_adress_legal_office" class="col-md-4 col-form-label">Офис</label>
+                <div class="form-group row offset-1 mb-4">
+                    <label for="organization_adress_legal_office" class="col-md-10 col-form-label">Офис</label>
 
-                    <input id="org_adress_legal_office"
+                    <input id="organization_adress_legal_office"
                     type="text"
-                    class="form-control @error('org_adress_legal_office') is-invalid @enderror"
-                    name="org_adress_legal_office"
-                    value="{{ old('org_adress_legal_office') }}"
-                    autocomplete="org_adress_legal_office" autofocus>
+                    class="form-control @error('organization_adress_legal_office') is-invalid @enderror"
+                    name="organization_adress_legal_office"
+                    value="{{ old('organization_adress_legal_office') }}"
+                    autocomplete="organization_adress_legal_office" autofocus>
 
-                    @error('org_adress_legal_office')
+                    @error('organization_adress_legal_office')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -152,21 +152,21 @@
                 </div>
 
                 <div class="form-group row">
-                    <h3 class="col-md-4 col-form-label font-weight-bold">Почтовый адрес</h3>
+                    <h3 class="col-md-10 col-form-label fw-bold">Почтовый адрес</h3>
                     <!--Почтовый адрес-->
                 </div>
 
                 <div class="form-group row offset-1">
-                    <label for="org_adress_post_index" class="col-md-4 col-form-label">Почтовый индекс</label>
+                    <label for="organization_adress_post_index" class="col-md-10 col-form-label">Почтовый индекс</label>
 
-                    <input id="org_adress_post_index"
+                    <input id="organization_adress_post_index"
                     type="text"
-                    class="form-control @error('org_adress_post_index') is-invalid @enderror"
-                    name="org_adress_post_index"
-                    value="{{ old('org_adress_post_index') }}"
-                    autocomplete="org_adress_post_index" autofocus>
+                    class="form-control @error('organization_adress_post_index') is-invalid @enderror"
+                    name="organization_adress_post_index"
+                    value="{{ old('organization_adress_post_index') }}"
+                    autocomplete="organization_adress_post_index" autofocus>
 
-                    @error('org_adress_post_index')
+                    @error('organization_adress_post_index')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -176,16 +176,16 @@
                 </div>
 
                 <div class="form-group row offset-1">
-                    <label for="org_adress_post_city" class="col-md-4 col-form-label">Город</label>
+                    <label for="organization_adress_post_city" class="col-md-10 col-form-label">Город</label>
 
-                    <input id="org_adress_post_city"
+                    <input id="organization_adress_post_city"
                     type="text"
-                    class="form-control @error('org_adress_post_city') is-invalid @enderror"
-                    name="org_adress_post_city"
-                    value="{{ old('org_adress_post_city') }}"
-                    autocomplete="org_adress_post_city" autofocus>
+                    class="form-control @error('organization_adress_post_city') is-invalid @enderror"
+                    name="organization_adress_post_city"
+                    value="{{ old('organization_adress_post_city') }}"
+                    autocomplete="organization_adress_post_city" autofocus>
 
-                    @error('org_adress_post_city')
+                    @error('organization_adress_post_city')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -195,16 +195,16 @@
                 </div>
 
                 <div class="form-group row offset-1">
-                    <label for="org_adress_post_street" class="col-md-4 col-form-label">Улица</label>
+                    <label for="organization_adress_post_street" class="col-md-10 col-form-label">Улица</label>
 
-                    <input id="org_adress_post_street"
+                    <input id="organization_adress_post_street"
                     type="text"
-                    class="form-control @error('org_adress_post_street') is-invalid @enderror"
-                    name="org_adress_post_street"
-                    value="{{ old('org_adress_post_street') }}"
-                    autocomplete="org_adress_post_street" autofocus>
+                    class="form-control @error('organization_adress_post_street') is-invalid @enderror"
+                    name="organization_adress_post_street"
+                    value="{{ old('organization_adress_post_street') }}"
+                    autocomplete="organization_adress_post_street" autofocus>
 
-                    @error('org_adress_post_street')
+                    @error('organization_adress_post_street')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -214,16 +214,16 @@
                 </div>
 
                 <div class="form-group row offset-1">
-                    <label for="org_adress_post_house" class="col-md-4 col-form-label">Дом</label>
+                    <label for="organization_adress_post_house" class="col-md-10 col-form-label">Дом</label>
 
-                    <input id="org_adress_post_house"
+                    <input id="organization_adress_post_house"
                     type="text"
-                    class="form-control @error('org_adress_post_house') is-invalid @enderror"
-                    name="org_adress_post_house"
-                    value="{{ old('org_adress_post_house') }}"
-                    autocomplete="org_adress_post_house" autofocus>
+                    class="form-control @error('organization_adress_post_house') is-invalid @enderror"
+                    name="organization_adress_post_house"
+                    value="{{ old('organization_adress_post_house') }}"
+                    autocomplete="organization_adress_post_house" autofocus>
 
-                    @error('org_adress_post_house')
+                    @error('organization_adress_post_house')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -233,16 +233,16 @@
                 </div>
 
                 <div class="form-group row offset-1">
-                    <label for="org_adress_post_corps" class="col-md-4 col-form-label">Корпус</label>
+                    <label for="organization_adress_post_corps" class="col-md-10 col-form-label">Корпус</label>
 
-                    <input id="org_adress_post_corps"
+                    <input id="organization_adress_post_corps"
                     type="text"
-                    class="form-control @error('org_adress_post_corps') is-invalid @enderror"
-                    name="org_adress_post_corps"
-                    value="{{ old('org_adress_post_corps') }}"
-                    autocomplete="org_adress_post_corps" autofocus>
+                    class="form-control @error('organization_adress_post_corps') is-invalid @enderror"
+                    name="organization_adress_post_corps"
+                    value="{{ old('organization_adress_post_corps') }}"
+                    autocomplete="organization_adress_post_corps" autofocus>
 
-                    @error('org_adress_post_corps')
+                    @error('organization_adress_post_corps')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -251,17 +251,17 @@
                     <!--Почтовый адрес Корпус-->
                 </div>
 
-                <div class="form-group row offset-1">
-                    <label for="org_adress_post_office" class="col-md-4 col-form-label">Офис</label>
+                <div class="form-group row offset-1 mb-4">
+                    <label for="organization_adress_post_office" class="col-md-10 col-form-label">Офис</label>
 
-                    <input id="org_adress_post_office"
+                    <input id="organization_adress_post_office"
                     type="text"
-                    class="form-control @error('org_adress_post_office') is-invalid @enderror"
-                    name="org_adress_post_office"
-                    value="{{ old('org_adress_post_office') }}"
-                    autocomplete="org_adress_post_office" autofocus>
+                    class="form-control @error('organization_adress_post_office') is-invalid @enderror"
+                    name="organization_adress_post_office"
+                    value="{{ old('organization_adress_post_office') }}"
+                    autocomplete="organization_adress_post_office" autofocus>
 
-                    @error('org_adress_post_office')
+                    @error('organization_adress_post_office')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -270,17 +270,17 @@
                     <!--Почтовый адрес Офис-->
                 </div>
 
-                <div class="form-group row">
-                    <label for="org_phone" class="col-md-4 col-form-label font-weight-bold">Телефон</label>
+                <div class="form-group row mb-4">
+                    <label for="organization_phone" class="col-md-10 col-form-label fw-bold">Телефон</label>
 
-                    <input id="org_phone"
+                    <input id="organization_phone"
                     type="text"
-                    class="form-control @error('org_phone') is-invalid @enderror"
-                    name="org_phone"
-                    value="{{ old('org_phone') }}"
-                    autocomplete="org_phone" autofocus>
+                    class="form-control @error('organization_phone') is-invalid @enderror"
+                    name="organization_phone"
+                    value="{{ old('organization_phone') }}"
+                    autocomplete="organization_phone" autofocus>
 
-                    @error('org_phone')
+                    @error('organization_phone')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -289,17 +289,17 @@
                     <!--Телефон-->
                 </div>
 
-                <div class="form-group row">
-                    <label for="org_fax" class="col-md-4 col-form-label font-weight-bold">Факс</label>
+                <div class="form-group row mb-4">
+                    <label for="organization_fax" class="col-md-10 col-form-label fw-bold">Факс</label>
 
-                    <input id="org_fax"
+                    <input id="organization_fax"
                     type="text"
-                    class="form-control @error('org_fax') is-invalid @enderror"
-                    name="org_fax"
-                    value="{{ old('org_fax') }}"
-                    autocomplete="org_fax" autofocus>
+                    class="form-control @error('organization_fax') is-invalid @enderror"
+                    name="organization_fax"
+                    value="{{ old('organization_fax') }}"
+                    autocomplete="organization_fax" autofocus>
 
-                    @error('org_fax')
+                    @error('organization_fax')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -308,17 +308,17 @@
                     <!--Факс-->
                 </div>
 
-                <div class="form-group row">
-                    <label for="org_email" class="col-md-4 col-form-label font-weight-bold">Электронный адрес</label>
+                <div class="form-group row mb-4">
+                    <label for="organization_email" class="col-md-10 col-form-label fw-bold">Электронный адрес</label>
 
-                    <input id="org_email"
+                    <input id="organization_email"
                     type="text"
-                    class="form-control @error('org_email') is-invalid @enderror"
-                    name="org_email"
-                    value="{{ old('org_email') }}"
-                    autocomplete="org_email" autofocus>
+                    class="form-control @error('organization_email') is-invalid @enderror"
+                    name="organization_email"
+                    value="{{ old('organization_email') }}"
+                    autocomplete="organization_email" autofocus>
 
-                    @error('org_email')
+                    @error('organization_email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -327,17 +327,17 @@
                     <!--Электронный адрес-->
                 </div>
 
-                <div class="form-group row">
-                    <label for="org_website" class="col-md-4 col-form-label font-weight-bold">Сайт</label>
+                <div class="form-group row mb-4">
+                    <label for="organization_website" class="col-md-10 col-form-label fw-bold">Сайт</label>
 
-                    <input id="org_website"
+                    <input id="organization_website"
                     type="text"
-                    class="form-control @error('org_website') is-invalid @enderror"
-                    name="org_website"
-                    value="{{ old('org_website') }}"
-                    autocomplete="org_website" autofocus>
+                    class="form-control @error('organization_website') is-invalid @enderror"
+                    name="organization_website"
+                    value="{{ old('organization_website') }}"
+                    autocomplete="organization_website" autofocus>
 
-                    @error('org_website')
+                    @error('organization_website')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -346,17 +346,17 @@
                     <!--Сайт-->
                 </div>
 
-                <div class="form-group row">
-                    <label for="org_directorate" class="col-md-4 col-form-label font-weight-bold">Наименование банка</label>
+                <div class="form-group row mb-4">
+                    <label for="organization_directorate" class="col-md-10 col-form-label fw-bold">Наименование банка</label>
 
-                    <input id="org_directorate"
+                    <input id="organization_directorate"
                     type="text"
-                    class="form-control @error('org_directorate') is-invalid @enderror"
-                    name="org_directorate"
-                    value="{{ old('org_directorate') }}"
-                    autocomplete="org_directorate" autofocus>
+                    class="form-control @error('organization_directorate') is-invalid @enderror"
+                    name="organization_directorate"
+                    value="{{ old('organization_directorate') }}"
+                    autocomplete="organization_directorate" autofocus>
 
-                    @error('org_directorate')
+                    @error('organization_directorate')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -365,17 +365,17 @@
                     <!--Дирекция-->
                 </div>
 
-                <div class="form-group row">
-                    <label for="org_debit_account" class="col-md-4 col-form-label font-weight-bold">Расчетный счет</label>
+                <div class="form-group row mb-4">
+                    <label for="organization_debit_account" class="col-md-10 col-form-label fw-bold">Расчетный счет</label>
 
-                    <input id="org_debit_account"
+                    <input id="organization_debit_account"
                     type="text"
-                    class="form-control @error('org_debit_account') is-invalid @enderror"
-                    name="org_debit_account"
-                    value="{{ old('org_debit_account') }}"
-                    autocomplete="org_debit_account" autofocus>
+                    class="form-control @error('organization_debit_account') is-invalid @enderror"
+                    name="organization_debit_account"
+                    value="{{ old('organization_debit_account') }}"
+                    autocomplete="organization_debit_account" autofocus>
 
-                    @error('org_debit_account')
+                    @error('organization_debit_account')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -384,17 +384,17 @@
                     <!--Расчетный счет-->
                 </div>
 
-                <div class="form-group row">
-                    <label for="org_bic" class="col-md-4 col-form-label font-weight-bold">Банковский идентификационный код (БИК)</label>
+                <div class="form-group row mb-4">
+                    <label for="organization_bic" class="col-md-10 col-form-label fw-bold">Банковский идентификационный код (БИК)</label>
 
-                    <input id="org_bic"
+                    <input id="organization_bic"
                     type="text"
-                    class="form-control @error('org_bic') is-invalid @enderror"
-                    name="org_bic"
-                    value="{{ old('org_bic') }}"
-                    autocomplete="org_bic" autofocus>
+                    class="form-control @error('organization_bic') is-invalid @enderror"
+                    name="organization_bic"
+                    value="{{ old('organization_bic') }}"
+                    autocomplete="organization_bic" autofocus>
 
-                    @error('org_bic')
+                    @error('organization_bic')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -403,17 +403,17 @@
                     <!--Банковский идентификационный код (БИК)-->
                 </div>
 
-                <div class="form-group row">
-                    <label for="org_unp" class="col-md-4 col-form-label font-weight-bold">Учётный номер плательщика (УНП)</label>
+                <div class="form-group row mb-4">
+                    <label for="organization_unp" class="col-md-10 col-form-label fw-bold">Учётный номер плательщика (УНП)</label>
 
-                    <input id="org_unp"
+                    <input id="organization_unp"
                     type="text"
-                    class="form-control @error('org_unp') is-invalid @enderror"
-                    name="org_unp"
-                    value="{{ old('org_unp') }}"
-                    autocomplete="org_unp" autofocus>
+                    class="form-control @error('organization_unp') is-invalid @enderror"
+                    name="organization_unp"
+                    value="{{ old('organization_unp') }}"
+                    autocomplete="organization_unp" autofocus>
 
-                    @error('org_unp')
+                    @error('organization_unp')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -422,17 +422,17 @@
                     <!--УНП-->
                 </div>
 
-                <div class="form-group row">
-                    <label for="org_okpo" class="col-md-4 col-form-label font-weight-bold">Общий классификатор предприятий и организаций (ОКПО)</label>
+                <div class="form-group row mb-3">
+                    <label for="organization_okpo" class="col-md-10 col-form-label fw-bold">Общий классификатор предприятий и организаций (ОКПО)</label>
 
-                    <input id="org_okpo"
+                    <input id="organization_okpo"
                     type="text"
-                    class="form-control @error('org_okpo') is-invalid @enderror"
-                    name="org_okpo"
-                    value="{{ old('org_okpo') }}"
-                    autocomplete="org_okpo" autofocus>
+                    class="form-control @error('organization_okpo') is-invalid @enderror"
+                    name="organization_okpo"
+                    value="{{ old('organization_okpo') }}"
+                    autocomplete="organization_okpo" autofocus>
 
-                    @error('org_okpo')
+                    @error('organization_okpo')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -441,7 +441,7 @@
                     <!--ОКПО-->
                 </div>
 
-                <div class="row pt-4">
+                <div class="row pt-4 mb-5">
                     <button class="p-3 mt-3 btn btn-primary d-inline-block">Зарегистрировать организацию</button>
                 </div>
 

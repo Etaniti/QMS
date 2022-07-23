@@ -9,7 +9,7 @@
         @method('PATCH')
 
         <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-5 offset-3">
 
                 <div class="row pt-4">
                     <h1>Редактировать профиль</h1>

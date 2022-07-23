@@ -14,33 +14,31 @@ class CreateOrganizationsTable extends Migration
     public function up()
     {
         Schema::create('organizations', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->unsignedBigInteger('user_id');
 
-            $table->string('org_name');
-            $table->string('org_adress_legal_index');
-            $table->string('org_adress_legal_city');
-            $table->string('org_adress_legal_street');
-            $table->string('org_adress_legal_house');
-            $table->string('org_adress_legal_corps')->nullable();
-            $table->string('org_adress_legal_office')->nullable();
-            $table->string('org_adress_post_index');
-            $table->string('org_adress_post_city');
-            $table->string('org_adress_post_street');
-            $table->string('org_adress_post_house');
-            $table->string('org_adress_post_corps')->nullable();
-            $table->string('org_adress_post_office')->nullable();
-            $table->string('org_phone');
-            $table->string('org_fax')->nullable();
-            $table->string('org_email');
-            $table->string('org_website')->nullable();
-            $table->string('org_directorate');
-            $table->string('org_debit_account');
-            $table->string('org_bic');
-            $table->integer('org_unp');
-            $table->integer('org_okpo')->nullable();
-
-            $table->index('user_id');
+            $table->string('organization_name');
+            $table->string('organization_adress_legal_index');
+            $table->string('organization_adress_legal_city');
+            $table->string('organization_adress_legal_street');
+            $table->string('organization_adress_legal_house');
+            $table->string('organization_adress_legal_corps')->nullable();
+            $table->string('organization_adress_legal_office')->nullable();
+            $table->string('organization_adress_post_index');
+            $table->string('organization_adress_post_city');
+            $table->string('organization_adress_post_street');
+            $table->string('organization_adress_post_house');
+            $table->string('organization_adress_post_corps')->nullable();
+            $table->string('organization_adress_post_office')->nullable();
+            $table->string('organization_phone');
+            $table->string('organization_fax')->nullable();
+            $table->string('organization_email');
+            $table->string('organization_website')->nullable();
+            $table->string('organization_directorate');
+            $table->string('organization_debit_account');
+            $table->string('organization_bic');
+            $table->integer('organization_unp');
+            $table->integer('organization_okpo')->nullable();
 
             $table->timestamps();
         });
